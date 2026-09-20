@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Dent | Gabinet stomatologiczny dla całej rodziny, Gorzów Wlkp.</title>
+<meta name="description" content="Family Dent, Gorzów Wlkp.: stomatologia dziecięca i zachowawcza, endodoncja, protetyka, chirurgia, rentgenodiagnostyka. Specjalistki stomatologii dziecięcej. Rejestracja: 607 035 080, ul. Londyńska 5A-H.">
+<style>
+  :root{
+    --bg:#f6f9f8; --surface:#ffffff; --ink:#1c2b27; --muted:#54655f;
+    --accent:#0e7268; --accent-deep:#0a5a52; --accent-soft:#e2efec; --accent-softer:#eef6f4;
+    --line:#dbe6e2; --radius:14px;
+    --shadow:0 10px 30px rgba(18,58,52,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16.5px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .kontener{max-width:1180px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent-deep)}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.015em;font-weight:700}
+  .przycisk{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:14px 26px;border-radius:999px;font-weight:600;font-size:16px;
+    text-decoration:none;transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .przycisk:active{transform:translateY(1px)}
+  .przycisk-glowny{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(14,114,104,.25)}
+  .przycisk-glowny:hover{background:var(--accent-deep)}
+  .przycisk-drugi{border:1.5px solid var(--accent);color:var(--accent-deep);background:transparent}
+  .przycisk-drugi:hover{background:var(--accent-softer)}
+
+  /* nagłówek */
+  header{
+    position:sticky;top:0;z-index:50;background:rgba(246,249,248,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .pasek{display:flex;align-items:center;gap:28px;height:68px}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .logo-znak{
+    width:40px;height:40px;border-radius:12px;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:.02em;
+  }
+  .logo-nazwa{font-weight:700;font-size:18px;line-height:1.15}
+  .logo-pod{font-size:11.5px;color:var(--muted);letter-spacing:.01em}
+  nav{display:flex;gap:26px;margin-left:auto}
+  nav a{text-decoration:none;color:var(--ink);font-size:15px;font-weight:500}
+  nav a:hover{color:var(--accent-deep)}
+  .pasek-tel{display:flex;align-items:center;gap:14px}
+  .numer{font-weight:700;font-size:15.5px;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .pasek .przycisk{padding:10px 20px;font-size:15px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;padding:72px 0 84px}
+  .hero-tlo{
+    position:absolute;right:-140px;top:-120px;width:640px;height:640px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, var(--accent-soft), transparent 65%);pointer-events:none;
+  }
+  .hero-siatka{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .etykieta{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-deep);background:var(--accent-soft);border-radius:999px;padding:7px 16px;margin-bottom:22px;
+  }
+  h1{font-size:clamp(34px,4.6vw,54px);font-weight:800}
+  .hero-lead{margin:20px 0 30px;font-size:18.5px;color:var(--muted);max-width:34em}
+  .hero-przyciski{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-karta{
+    position:relative;background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:30px 30px 26px;box-shadow:var(--shadow);
+  }
+  .hero-karta .rejestracja{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .hero-karta .tel-duzy{font-size:30px;font-weight:800;color:var(--accent-deep);text-decoration:none;display:inline-block;margin:4px 0 18px;letter-spacing:-.01em}
+  .hero-wiersz{
+    display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line);font-size:15.5px;
+  }
+  .hero-wiersz svg{flex:none;margin-top:2px}
+  .hero-adres{
+    margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--muted);line-height:1.5;
+  }
+
+  /* pasek zaufania */
+  .zaufanie{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .zaufanie-siatka{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:22px 0}
+  .zaufanie-item{display:flex;gap:12px;align-items:center;font-size:14.5px;font-weight:600;color:var(--ink)}
+  .zaufanie-item svg{flex:none}
+
+  /* sekcje */
+  section{padding:78px 0}
+  .naglowek-sekcji{margin-bottom:40px}
+  h2{font-size:clamp(26px,3vw,36px);font-weight:800}
+  .naglowek-sekcji p{margin-top:12px;color:var(--muted);font-size:17px;max-width:46em}
+
+  /* usługi */
+  .uslugi-siatka{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .usluga{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;transition:border-color .2s ease, transform .2s ease;
+  }
+  .usluga:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .usluga-ikona{
+    width:46px;height:46px;border-radius:12px;background:var(--accent-softer);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .usluga h3{font-size:17px;margin-bottom:6px}
+  .usluga p{font-size:14px;color:var(--muted);line-height:1.5}
+
+  /* dla dzieci */
+  .dzieci{background:var(--accent-softer);border-radius:24px;padding:56px;position:relative;overflow:hidden}
+  .dzieci-siatka{display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative}
+  .dzieci ul{list-style:none;display:flex;flex-direction:column;gap:0}
+  .dzieci li{
+    display:flex;gap:14px;align-items:flex-start;padding:15px 0;border-bottom:1px solid #cfe2dd;font-size:16px;
+  }
+  .dzieci li:last-child{border-bottom:none}
+  .dzieci li svg{flex:none;margin-top:3px}
+  .dzieci-notka{margin-top:24px;font-size:14.5px;color:var(--muted)}
+  .dzieci-blok p{color:var(--muted);font-size:16.5px;margin-bottom:8px}
+
+  /* lekarze */
+  .lekarze-siatka{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .lekarz{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px;display:flex;gap:22px;align-items:flex-start;
+  }
+  .lekarz:nth-child(2){margin-top:36px}
+  .lekarz-awatar{
+    flex:none;width:76px;height:76px;border-radius:50%;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lekarz h3{font-size:19px}
+  .lekarz-tytul{font-size:13.5px;font-weight:700;color:var(--accent-deep);margin:3px 0 12px;letter-spacing:.01em}
+  .lekarz p{font-size:14.5px;color:var(--muted)}
+
+  /* cennik */
+  .cennik{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cennik-siatka{display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+  .cennik-grupa h3{font-size:16.5px;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:6px}
+  .cennik-pozycja{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .cennik-pozycja:last-child{border-bottom:none}
+  .cennik-pozycja span:first-child{color:var(--ink)}
+  .cennik-cena{white-space:nowrap;font-weight:600;color:var(--accent-deep)}
+  .cennik-notka{margin-top:36px;font-size:13.5px;color:var(--muted)}
+
+  /* kontakt */
+  .kontakt-siatka{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  .kontakt-dane{display:flex;flex-direction:column}
+  .kontakt-wiersz{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .kontakt-wiersz:first-child{padding-top:0}
+  .kontakt-ikona{flex:none;width:44px;height:44px;border-radius:12px;background:var(--accent-softer);display:flex;align-items:center;justify-content:center}
+  .kontakt-wiersz .opis{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .kontakt-wiersz .wartosc{font-size:17px;font-weight:600;line-height:1.45}
+  .kontakt-wiersz a{color:var(--ink);text-decoration:none}
+  .kontakt-wiersz a:hover{color:var(--accent-deep)}
+  .kontakt-karta{
+    background:var(--accent);border-radius:22px;padding:44px 40px;color:#fff;
+  }
+  .kontakt-karta h3{font-size:26px;margin-bottom:10px;color:#fff}
+  .kontakt-karta p{color:#d7ebe7;font-size:15.5px;margin-bottom:28px}
+  .kontakt-karta .przycisk-glowny{background:#fff;color:var(--accent-deep);box-shadow:none;width:100%}
+  .kontakt-karta .przycisk-glowny:hover{background:#e9f5f2}
+  .kontakt-karta .przycisk-drugi{border-color:rgba(255,255,255,.55);color:#fff;width:100%;margin-top:12px}
+  .kontakt-karta .przycisk-drugi:hover{background:rgba(255,255,255,.1)}
+  .godziny-zajawka{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);font-size:14.5px;color:#d7ebe7}
+  .godziny-zajawka strong{color:#fff}
+
+  footer{border-top:1px solid var(--line);background:var(--surface)}
+  .stopka-srodek{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:34px 0;align-items:center}
+  .stopka-lewa{font-size:14.5px;color:var(--muted);line-height:1.7}
+  .stopka-prawa{font-size:13px;color:var(--muted);text-align:right}
+
+  /* animacje */
+  .ujawnij{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)}
+  .ujawnij.widoczny{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .ujawnij{opacity:1;transform:none;transition:none}
+    .przycisk,.usluga{transition:none}
+  }
+
+  /* telefon */
+  @media (max-width: 960px){
+    nav{display:none}
+    .hero-siatka{grid-template-columns:1fr;gap:40px}
+    .uslugi-siatka{grid-template-columns:repeat(2,1fr)}
+    .zaufanie-siatka{grid-template-columns:repeat(2,1fr);gap:14px}
+    .dzieci{padding:36px 26px}
+    .dzieci-siatka{grid-template-columns:1fr;gap:30px}
+    .lekarze-siatka{grid-template-columns:1fr}
+    .lekarz:nth-child(2){margin-top:0}
+    .cennik-siatka{grid-template-columns:repeat(2,1fr)}
+    .kontakt-siatka{grid-template-columns:1fr;gap:36px}
+  }
+  @media (max-width: 560px){
+    .pasek-tel .numer{display:none}
+    .zaufanie-siatka{grid-template-columns:1fr}
+    .uslugi-siatka{grid-template-columns:1fr}
+    .cennik-siatka{grid-template-columns:1fr}
+    .hero{padding:48px 0 60px}
+    .hero-karta .tel-duzy{font-size:25px}
+    section{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kontener pasek">
+    <a class="logo" href="#gora" aria-label="Family Dent, strona główna">
+      <span class="logo-znak">FD</span>
+      <span>
+        <span class="logo-nazwa">Family Dent</span><br>
+        <span class="logo-pod">Gabinet stomatologiczny</span>
+      </span>
+    </a>
+    <nav aria-label="Menu główne">
+      <a href="#uslugi">Usługi</a>
+      <a href="#dzieci">Dla dzieci</a>
+      <a href="#lekarze">Lekarze</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="pasek-tel">
+      <a class="numer" href="tel:+48607035080">+48 607 035 080</a>
+      <a class="przycisk przycisk-glowny" href="tel:+48607035080">Umów wizytę</a>
+    </div>
+  </div>
+</header>
+
+<main id="gora">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tlo" aria-hidden="true"></div>
+    <div class="kontener hero-siatka">
+      <div>
+        <span class="etykieta">Gabinet w Gorzowie Wielkopolskim</span>
+        <h1>Nowoczesna stomatologia dla całej rodziny</h1>
+        <p class="hero-lead">Przyjazny gabinet dla dorosłych i dzieci. Nowoczesny sprzęt, miła atmosfera i leczenie, które pozwala pozbyć się strachu przed dentystą.</p>
+        <div class="hero-przyciski">
+          <a class="przycisk przycisk-glowny" href="tel:+48607035080">Umów wizytę</a>
+          <a class="przycisk przycisk-drugi" href="#cennik">Zobacz cennik</a>
+        </div>
+      </div>
+      <div class="hero-karta" aria-label="Najważniejsze informacje o gabinecie">
+        <p class="rejestracja">Rejestracja telefoniczna</p>
+        <a class="tel-duzy" href="tel:+48607035080">+48 607 035 080</a>
+        <div class="hero-wiersz">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>W gabinecie przyjmują <strong>specjalistki stomatologii dziecięcej</strong></span>
+        </div>
+        <div class="hero-wiersz">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Sedacja wziewna gazem rozweselającym dla najmłodszych</span>
+        </div>
+        <div class="hero-wiersz">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Rentgenodiagnostyka i leczenie endodontyczne</span>
+        </div>
+        <p class="hero-adres">Family Dent, ul. Londyńska 5A-H lok. 4<br>66-400 Gorzów Wielkopolski</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASEK ZAUFANIA -->
+  <div class="zaufanie">
+    <div class="kontener zaufanie-siatka">
+      <div class="zaufanie-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c2.6 0 4 1.4 4 3.6 0 1.2-.4 2-1 2.9.9.5 1.5 1.4 1.5 2.7 0 2.3-1.8 4.3-4.5 4.3S7.5 14.5 7.5 12.2c0-1.3.6-2.2 1.5-2.7-.6-.9-1-1.7-1-2.9C8 4.4 9.4 3 12 3Z"/><path d="M12 3v14.5"/><path d="M8.6 8h6.8"/></svg>
+        <span>Dwie specjalistki stomatologii dziecięcej</span>
+      </div>
+      <div class="zaufanie-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M7.5 12h9"/></svg>
+        <span>Leczenie dorosłych i dzieci</span>
+      </div>
+      <div class="zaufanie-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 9h16M9 4v16"/></svg>
+        <span>Rentgenodiagnostyka w gabinecie</span>
+      </div>
+      <div class="zaufanie-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l1.8 4.6L18.5 10l-4.7 1.4L12 16l-1.8-4.6L5.5 10l4.7-1.4Z"/><path d="M18 15.5l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9Z"/></svg>
+        <span>Wybielanie i stomatologia estetyczna</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- USŁUGI -->
+  <section id="uslugi">
+    <div class="kontener">
+      <div class="naglowek-sekcji ujawnij">
+        <h2>Zakres usług</h2>
+        <p>Od profilaktyki po protetykę: opiekujemy się zębami pacjentów w każdym wieku.</p>
+      </div>
+      <div class="uslugi-siatka">
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 8.4-7 10-4-1.6-7-5.6-7-10V6Z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Profilaktyka</h3>
+          <p>Przeglądy, skaling, piaskowanie i fluoryzacja.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8"/><path d="M9 9.5h.01M15 9.5h.01" stroke-width="2.2"/></svg></div>
+          <h3>Stomatologia dziecięca</h3>
+          <p>Specjalistyczne leczenie zębów mlecznych i stałych.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4c2.7 0 4.2 1.5 4.2 3.8 0 1.3-.4 2.2-1 3.1.9.5 1.6 1.5 1.6 2.8 0 2.4-1.9 4.5-4.8 4.5s-4.8-2.1-4.8-4.5c0-1.3.7-2.3 1.6-2.8-.6-.9-1-1.8-1-3.1C7.8 5.5 9.3 4 12 4Z"/></svg></div>
+          <h3>Stomatologia zachowawcza</h3>
+          <p>Wypełnianie ubytków w zębach stałych i mlecznych.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v6M12 10c-3 0-5 1.5-5 4 0 2 1.5 2 2.5 2s1.5-1 2.5-1 1.5 1 2.5 1 2.5 0 2.5-2c0-2.5-2-4-5-4Z"/><path d="M9 4.5C9.6 5.4 10.6 6 12 6s2.4-.6 3-1.5"/></svg></div>
+          <h3>Endodoncja</h3>
+          <p>Leczenie kanałowe zębów, także ponowne.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10M8.5 18l-1-9c0-2.2 2-4 4.5-4s4.5 1.8 4.5 4l-1 9"/></svg></div>
+          <h3>Protetyka</h3>
+          <p>Uzupełnienia brakujących zębów i odbudowy.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4v5.5M14.5 4v5.5M7 9.5h10v2c0 3-2.2 5.5-5 5.5s-5-2.5-5-5.5Z"/><path d="M12 17v3"/></svg></div>
+          <h3>Chirurgia</h3>
+          <p>Zabiegi chirurgiczne i usuwanie zębów.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l1.8 4.6L18.5 10l-4.7 1.4L12 16l-1.8-4.6L5.5 10l4.7-1.4Z"/></svg></div>
+          <h3>Stomatologia estetyczna</h3>
+          <p>Wybielanie nakładkowe i na jednej wizycie lampą.</p>
+        </div>
+        <div class="usluga ujawnij">
+          <div class="usluga-ikona"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 9h16M9 4v16"/></svg></div>
+          <h3>Rentgenodiagnostyka</h3>
+          <p>Zdjęcia zębowe wykonywane na miejscu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DLA DZIECI -->
+  <section id="dzieci" style="padding-top:0">
+    <div class="kontener">
+      <div class="dzieci">
+        <div class="dzieci-siatka">
+          <div class="dzieci-blok ujawnij">
+            <span class="etykieta" style="background:#fff">Najmłodsi pacjenci</span>
+            <h2>Stomatologia dziecięca bez strachu</h2>
+            <p style="margin-top:14px;color:var(--muted)">Przyjemnie urządzone wnętrze i miła atmosfera wizyt pomagają dzieciom wkroczyć w dorosłość z pełną akceptacją leczenia stomatologicznego.</p>
+            <p class="dzieci-notka">Nasze lekarze są członkiniami Polskiego Towarzystwa Stomatologów Dziecięcych.</p>
+          </div>
+          <ul class="ujawnij" aria-label="Zakres leczenia dziecięcego">
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Konsultacje specjalistyczne i badania kontrolne</span>
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Sedacja wziewna gazem rozweselającym (200 zł / 30 min)</span>
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Lakowanie bruzd zębów stałych</span>
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Leczenie biologiczne miazgi z użyciem MTA / Biodentine</span>
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Odbudowa zębów koronami stalowymi</span>
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>Leczenie kanałowe zębów mlecznych</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEKARZE -->
+  <section id="lekarze">
+    <div class="kontener">
+      <div class="naglowek-sekcji ujawnij">
+        <h2>Nasi lekarze</h2>
+        <p>Specjalistki stomatologii dziecięcej, stale podnoszące kwalifikacje na kursach i konferencjach w kraju i za granicą.</p>
+      </div>
+      <div class="lekarze-siatka">
+        <article class="lekarz ujawnij">
+          <div class="lekarz-awatar" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.8-3.4 3.4-5.2 6.5-5.2s5.7 1.8 6.5 5.2"/></svg>
+          </div>
+          <div>
+            <h3>lek. dent. Martyna Płaczek</h3>
+            <p class="lekarz-tytul">specjalista stomatologii dziecięcej</p>
+            <p>Absolwentka Wydziału Lekarsko-Dentystycznego Pomorskiej Akademii Medycznej w Szczecinie (2008). W praktyce najbliższe jej są endodoncja i pedodoncja. Członkini Polskiego Towarzystwa Stomatologów Dziecięcych (PTSD) i Polskiej Akademii Stomatologów Dziecięcych (PASD).</p>
+          </div>
+        </article>
+        <article class="lekarz ujawnij">
+          <div class="lekarz-awatar" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c.8-3.4 3.4-5.2 6.5-5.2s5.7 1.8 6.5 5.2"/></svg>
+          </div>
+          <div>
+            <h3>lek. dent. Joanna Stachowiak-Ruda</h3>
+            <p class="lekarz-tytul">specjalista stomatologii dziecięcej</p>
+            <p>Absolwentka Wydziału Lekarsko-Dentystycznego PUM w Szczecinie (2009, dyplom z wyróżnieniem), tytuł specjalisty w 2016 r. Autorka prac naukowych, zaangażowana w projekt edukacyjny „Dzieciństwo bez próchnicy”.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENNIK -->
+  <section id="cennik" class="cennik">
+    <div class="kontener">
+      <div class="naglowek-sekcji ujawnij">
+        <h2>Cennik usług</h2>
+        <p>Wybrane pozycje z cennika gabinetu. Pełna oferta i wycena podczas wizyty.</p>
+      </div>
+      <div class="cennik-siatka">
+        <div class="cennik-grupa ujawnij">
+          <h3>Profilaktyka</h3>
+          <div class="cennik-pozycja"><span>Przegląd jamy ustnej</span><span class="cennik-cena">150-250 zł</span></div>
+          <div class="cennik-pozycja"><span>Skaling i polerowanie</span><span class="cennik-cena">300 zł</span></div>
+          <div class="cennik-pozycja"><span>Skaling, polerowanie i piaskowanie</span><span class="cennik-cena">350-400 zł</span></div>
+          <div class="cennik-pozycja"><span>Fluoryzacja kontaktowa</span><span class="cennik-cena">150-200 zł</span></div>
+          <div class="cennik-pozycja"><span>Wybielanie nakładkowe</span><span class="cennik-cena">1100 zł</span></div>
+        </div>
+        <div class="cennik-grupa ujawnij">
+          <h3>Stomatologia zachowawcza</h3>
+          <div class="cennik-pozycja"><span>Znieczulenie</span><span class="cennik-cena">60 zł</span></div>
+          <div class="cennik-pozycja"><span>Wypełnienie zęba stałego</span><span class="cennik-cena">250-450 zł</span></div>
+          <div class="cennik-pozycja"><span>Wypełnienie zęba mlecznego</span><span class="cennik-cena">200-300 zł</span></div>
+          <div class="cennik-pozycja"><span>Odbudowa po leczeniu kanałowym</span><span class="cennik-cena">300-450 zł</span></div>
+          <div class="cennik-pozycja"><span>Odbudowa włóknem szklanym</span><span class="cennik-cena">500-650 zł</span></div>
+        </div>
+        <div class="cennik-grupa ujawnij">
+          <h3>Endodoncja</h3>
+          <div class="cennik-pozycja"><span>Ząb jednokanałowy</span><span class="cennik-cena">700 zł</span></div>
+          <div class="cennik-pozycja"><span>Ząb dwukanałowy</span><span class="cennik-cena">1000 zł</span></div>
+          <div class="cennik-pozycja"><span>Ząb trzykanałowy</span><span class="cennik-cena">1400 zł</span></div>
+          <div class="cennik-pozycja"><span>Kanał dodatkowy</span><span class="cennik-cena">250 zł</span></div>
+          <div class="cennik-pozycja"><span>Ponowne leczenie (reendo)</span><span class="cennik-cena">+50%</span></div>
+        </div>
+        <div class="cennik-grupa ujawnij">
+          <h3>Stomatologia dziecięca</h3>
+          <div class="cennik-pozycja"><span>Konsultacja specjalistyczna</span><span class="cennik-cena">200-250 zł</span></div>
+          <div class="cennik-pozycja"><span>Badanie kontrolne</span><span class="cennik-cena">100-150 zł</span></div>
+          <div class="cennik-pozycja"><span>Sedacja wziewna / 30 min</span><span class="cennik-cena">200 zł</span></div>
+          <div class="cennik-pozycja"><span>Leczenie kanałowe zęba mlecznego</span><span class="cennik-cena">200 zł</span></div>
+          <div class="cennik-pozycja"><span>Odbudowa koroną stalową</span><span class="cennik-cena">500 zł</span></div>
+        </div>
+      </div>
+      <p class="cennik-notka">Ceny według cennika opublikowanego na familydent.gorzow.pl. Ostateczny koszt leczenia zależy od zakresu ustalonego z lekarzem.</p>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <div class="kontener kontakt-siatka">
+      <div class="ujawnij">
+        <div class="naglowek-sekcji" style="margin-bottom:16px">
+          <h2>Kontakt</h2>
+        </div>
+        <div class="kontakt-dane">
+          <div class="kontakt-wiersz">
+            <div class="kontakt-ikona" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.3-6.5-10a6.5 6.5 0 1 1 13 0c0 4.7-6.5 10-6.5 10Z"/><circle cx="12" cy="11" r="2.3"/></svg></div>
+            <div>
+              <p class="opis">Adres</p>
+              <p class="wartosc">ul. Londyńska 5A-H lok. 4, 66-400 Gorzów Wielkopolski</p>
+            </div>
+          </div>
+          <div class="kontakt-wiersz">
+            <div class="kontakt-ikona" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.8 3.8 9 6l-1.6 2.1a11.4 11.4 0 0 0 8.5 8.5L18 15l2.2 2.2-1.4 2.8c-.4.7-1.2 1.1-2 1C10.6 20 4 13.4 3 7.2c-.1-.8.3-1.6 1-2Z"/></svg></div>
+            <div>
+              <p class="opis">Telefon i rejestracja</p>
+              <p class="wartosc"><a href="tel:+48607035080">+48 607 035 080</a></p>
+            </div>
+          </div>
+          <div class="kontakt-wiersz">
+            <div class="kontakt-ikona" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6 7.5-6"/></svg></div>
+            <div>
+              <p class="opis">E-mail</p>
+              <p class="wartosc"><a href="mailto:familydent@familydent.gorzow.pl">familydent@familydent.gorzow.pl</a></p>
+            </div>
+          </div>
+          <div class="kontakt-wiersz" style="border-bottom:none">
+            <div class="kontakt-ikona" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0e7268" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
+            <div>
+              <p class="opis">Godziny przyjęć</p>
+              <p class="wartosc">[tu będą dane]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kontakt-karta ujawnij">
+        <h3>Gotowy na wizytę?</h3>
+        <p>Zadzwoń i umów termin w gabinecie Family Dent. Rejestracja prowadzona jest telefonicznie.</p>
+        <a class="przycisk przycisk-glowny" href="tel:+48607035080">Umów wizytę</a>
+        <a class="przycisk przycisk-drugi" href="mailto:familydent@familydent.gorzow.pl">Napisz wiadomość</a>
+        <p class="godziny-zajawka"><strong>Godziny przyjęć:</strong> [tu będą dane]</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="kontener stopka-srodek">
+    <div class="stopka-lewa">
+      <strong>Family Dent</strong><br>
+      ul. Londyńska 5A-H lok. 4, 66-400 Gorzów Wielkopolski<br>
+      tel. <a href="tel:+48607035080">+48 607 035 080</a> · familydent@familydent.gorzow.pl
+    </div>
+    <div class="stopka-prawa">
+      © 2026 Family Dent · Koncept nowej strony familydent.gorzow.pl
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ruch = !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var elementy = document.querySelectorAll('.ujawnij');
+  if (ruch || !('IntersectionObserver' in window)) {
+    elementy.forEach(function(el){ el.classList.add('widoczny'); });
+    return;
+  }
+  var obserwator = new IntersectionObserver(function(wejscia){
+    wejscia.forEach(function(w){
+      if (w.isIntersecting) {
+        w.target.classList.add('widoczny');
+        obserwator.unobserve(w.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  elementy.forEach(function(el){ obserwator.observe(el); });
+})();
+</script>
+</body>
+</html>
